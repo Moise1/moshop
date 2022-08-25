@@ -5,8 +5,8 @@ import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap'
 import {Rating} from '../components/Rating'
 import {Loader} from '../components/Loader'
 import {Message} from '../components/Message'
-import { listProductDetails, createProductReview } from '../actions/productActions'
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import { listProductDetails, createProductReview } from '../redux/actions/productActions'
+import { PRODUCT_CREATE_REVIEW_RESET } from '../redux/constants/productConstants'
 
 export const Product = ({ match, history }) => {
     const [qty, setQty] = useState(1)
