@@ -26,13 +26,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    
+    'corsheaders',
+
     'base.apps.BaseConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    'corsheaders.middleware.CorsMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,3 +113,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Set path for imgs to be loaded from 
+MEDIA_URL = '/imgs/'
+
+
+STATICFILES_DIRS = [
+    BASE_DIR , 'static'
+]
+
+# For user uploaded content
+MEDIA_ROOT = 'static/imgs'
+
+CORS_ALLOW_ALL_ORIGINS = True
