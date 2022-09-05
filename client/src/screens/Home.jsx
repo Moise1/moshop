@@ -1,21 +1,17 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Row, Col } from 'react-bootstrap'
 import { Product } from '../components/Product';
 import { listProducts } from '../redux/actions/productActions';
-// import products from '../products';
 
 export const Home = () => {
-  const [products, setProducts] = useState();
+  const {products} = useSelector(state => state.productList)
   const dispatch = useDispatch();
-  useEffect(() => {
-  (async () =>{
-    const results = await dispatch(listProducts())
-    setProducts(results)
-  })()
-  }, [])
 
-  console.log('PRODUCTS', products);
+  useEffect(() => {
+    dispatch(listProducts());
+  },[listProducts])
+
   return (
     <div>
         <h>Latest Products</h>
