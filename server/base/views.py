@@ -6,7 +6,7 @@ from .models import Product
 from .serializers import ProductSerializer
 
 
-from .products import products
+# from .products import products
 # Create your views here.
 
 @api_view(['GET'])

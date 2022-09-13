@@ -20,26 +20,23 @@ import {
 import { PRODUCT_CREATE_REVIEW_RESET } from "../redux/constants/productConstants";
 import { withRouter } from "../hoc/withRouter";
 
-const WrappedProduct = ({router}) => {
-  const {params, navigate} = router;
+const WrappedProduct = ({ router }) => {
+  const { params, navigate } = router;
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
   const dispatch = useDispatch();
 
-  const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+  const { loading, error, product } = useSelector((state) => state.productDetails);
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const { userInfo } = useSelector((state) => state.userLogin);
 
-  const productReviewCreate = useSelector((state) => state.productReviewCreate);
   const {
     loading: loadingProductReview,
     error: errorProductReview,
     success: successProductReview,
-  } = productReviewCreate;
+  } = useSelector((state) => state.productReviewCreate);
 
   useEffect(() => {
     if (successProductReview) {
@@ -52,7 +49,6 @@ const WrappedProduct = ({router}) => {
   }, [dispatch, successProductReview]);
 
   const addToCartHandler = () => {
-    return null;
     navigate(`/cart/${params.id}?qty=${qty}`);
   };
 

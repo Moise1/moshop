@@ -2,6 +2,7 @@ import {
     useLocation,
     useNavigate,
     useParams,
+    useSearchParams
   } from "react-router-dom";
   
   export const  withRouter = (Component) => {
@@ -9,10 +10,11 @@ import {
       let location = useLocation();
       let navigate = useNavigate();
       let params = useParams();
+      const [search] = useSearchParams();
       return (
         <Component
           {...props}
-          router={{ location, navigate, params }}
+          router={{ location, navigate, params, search }}
         />
       );
     }
