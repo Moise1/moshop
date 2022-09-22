@@ -5,7 +5,7 @@ import { Product } from '../components/Product';
 import { listProducts } from '../redux/actions/productActions';
 
 export const Home = () => {
-  const {products} = useSelector(state => state.productList)
+  const {products} = useSelector(state => state.productList.products)
   const dispatch = useDispatch();
 
   useEffect(() => {

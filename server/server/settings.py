@@ -36,7 +36,7 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication', #JWT Authentication strictly required.
     )
 }
 
@@ -168,5 +168,3 @@ MEDIA_ROOT = 'static/imgs'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-
-# Stopped on folder 6 - vid 3
