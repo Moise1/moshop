@@ -37,7 +37,7 @@ import {
 
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password, navigate) => async (dispatch) => {
     try {
         dispatch({
             type: USER_LOGIN_REQUEST
@@ -60,7 +60,8 @@ export const login = (email, password) => async (dispatch) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data));
+        navigate('/');
 
     } catch (error) {
         dispatch({
@@ -82,7 +83,7 @@ export const logout = () => (dispatch) => {
 }
 
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (userData, navigate) => async (dispatch) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST
@@ -96,7 +97,7 @@ export const register = (name, email, password) => async (dispatch) => {
 
         const { data } = await axios.post(
             '/api/users/register/',
-            { 'name': name, 'email': email, 'password': password },
+            userData,
             config
         )
 
@@ -110,7 +111,8 @@ export const register = (name, email, password) => async (dispatch) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data));
+        navigate('/');
 
     } catch (error) {
         dispatch({
@@ -131,7 +133,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
         const {
             userLogin: { userInfo },
-        } = getState()
+        } = getState();
 
         const config = {
             headers: {

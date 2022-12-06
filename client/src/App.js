@@ -6,6 +6,8 @@ import { Home } from "./screens/Home";
 import { Product } from "./screens/Product";
 import { Cart } from "./screens/Cart";
 import { Login } from "./screens/Login";
+import { Register } from "./screens/Register";
+import { EditUser } from "./screens/EditUser";
 
 export const App = () => {
   return (
@@ -16,7 +18,9 @@ export const App = () => {
           <Container>
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/login" element={<Login/>} />
+              <Route path="/login" element={<Login/>} />
+              <Route path="/register" element={<Register/>} />
+              <Route path="/profile" element={<EditUser/>} />
               <Route path="/products/:id" element={<Product />} />
               <Route path="/cart" element={<Cart/>} />
               <Route path="/cart/:id" element={<Cart/>} />
